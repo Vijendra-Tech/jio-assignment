@@ -2,7 +2,7 @@ import { Suspense, useRef, useState } from "react";
 import "./App.css";
 import { ErrorBoundary } from "react-error-boundary";
 import HLSPlayer from "./components/HLSPlayer";
-import { PlayIcon, Pause } from "lucide-react";
+import { PlayIcon, Pause, Github } from "lucide-react";
 
 function App() {
   const [hlsUrl, setHlsUrl] = useState(
@@ -27,13 +27,6 @@ function App() {
     }
   }
 
-  function _handleToggleControls() {
-    if (videoRef?.current?.hasAttribute("controls")) {
-      videoRef.current.removeAttribute("controls");
-    } else {
-      videoRef?.current?.setAttribute("controls", "true");
-    }
-  }
   const handleCurrentTime = () => {
     const seekTime = parseFloat(seekTimeRef.current.value);
     if (!isNaN(seekTime)) {
@@ -43,6 +36,15 @@ function App() {
 
   return (
     <>
+      <Github
+        style={{ float: "right", cursor:"pointer" }}
+        onClick={() => {
+          window.open(
+            "https://github.com/Vijendra-Tech/jio-assignment",
+            "_blank"
+          );
+        }}
+      />
       <div className="video-container">
         <ErrorBoundary
           fallback={<div>Wrong Input</div>}
@@ -99,7 +101,7 @@ function App() {
               lineHeight: "30px",
               fontSize: "16px",
               color: "#333",
-            }}
+            }}  
           />
         </div>
       </div>
